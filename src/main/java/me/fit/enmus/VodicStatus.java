@@ -1,8 +1,8 @@
-package me.fit.exception;
+package me.fit.enmus;
 
 public enum VodicStatus {
 
-	EXISTS("Vodic vec postoji");
+EXISTS("Student vec postoji");
 	
 	private String label;
 
@@ -17,8 +17,5 @@ public enum VodicStatus {
 	public void setLabel(String label) {
 		this.label = label;
 	}
-	
-	
-	
-	
 }
+

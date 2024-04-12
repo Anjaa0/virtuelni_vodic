@@ -7,7 +7,7 @@ import jakarta.inject.Inject;
 import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
 import me.fit.exception.VodicException;
-import me.fit.exception.VodicStatus;
+import me.fit.enmus.VodicStatus;
 import me.fit.model.Vodic;
 
 @Dependent
