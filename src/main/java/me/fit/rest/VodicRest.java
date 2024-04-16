@@ -11,7 +11,6 @@ import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.QueryParam;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
-
 import me.fit.exception.VodicException;
 import me.fit.model.Vodic;
 import me.fit.service.VodicService;
@@ -52,7 +51,7 @@ public class VodicRest {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/getVodicByName")
-    public Response getStudentsByName(@QueryParam(value = "name") String name) {
+    public Response getVodicByName(@QueryParam(value = "name") String name) {
         System.out.println("NAME QUERY PARAMETER: " + name);
         List<Vodic> vodici = vodicServis.getVodicByName(name);
         return Response.ok().entity(vodici).build();
