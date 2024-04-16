@@ -1,12 +1,12 @@
 package me.fit.enmus;
 
-public enum VodicStatus {
+public enum TuristaStatus{
 
-EXISTS("Vodič već postoji");
+	EXISTS("Turista već postoji");
 	
 	private String label;
 
-	private VodicStatus(String label) {
+	private TuristaStatus(String label) {
 		this.label = label;
 	}
 
@@ -17,5 +17,5 @@ EXISTS("Vodič već postoji");
 	public void setLabel(String label) {
 		this.label = label;
 	}
+	
 }
-
