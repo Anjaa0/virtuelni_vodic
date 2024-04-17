@@ -103,7 +103,7 @@ public class Turista {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Vodic other = (Vodic) obj;
+		Turista other = (Turista) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;

@@ -9,6 +9,7 @@ import jakarta.transaction.Transactional;
 import me.fit.exception.VodicException;
 import me.fit.enmus.VodicStatus;
 import me.fit.model.Vodic;
+import me.fit.rest.IpLog;
 
 @Dependent
 public class VodicService {
@@ -17,7 +18,7 @@ public class VodicService {
 	private EntityManager em;
 	
 	@Transactional
-	public Vodic dodajVodica(Vodic v) throws VodicException {
+	public Vodic dodajVodica(Vodic v,IpLog ipLog) throws VodicException {
 		
 		List<Vodic> vodici=getAllVodic();
 		
@@ -25,7 +26,7 @@ public class VodicService {
     	throw new VodicException(VodicStatus.EXISTS.getLabel());   
        }
 		
-		
+		v.setIpLog(ipLog);
 		return em.merge(v);
 	}
 	

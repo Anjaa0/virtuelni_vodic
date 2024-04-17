@@ -1,12 +1,14 @@
 package me.fit.model;
-
-
-	import jakarta.persistence.Entity;
-	import jakarta.persistence.GeneratedValue;
+	import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
 	import jakarta.persistence.GenerationType;
 	import jakarta.persistence.Id;
 import jakarta.persistence.NamedQueries;
 import jakarta.persistence.NamedQuery;
+import jakarta.persistence.OneToOne;
+import me.fit.rest.IpLog;
 
 	@Entity
 	@NamedQueries({ 
@@ -31,20 +33,23 @@ import jakarta.persistence.NamedQuery;
 		private int rejting;
 		private String lokacija;
 		
-		public Vodic(String ime, String prezime, String email, String korisnickoIme, String sifra, int rejting,
-				String lokacija) {
-			super();
-			this.ime = ime;
-			this.prezime = prezime;
-			this.email = email;
-			this.korisnickoIme = korisnickoIme;
-			this.sifra = sifra;
-			this.rejting = rejting;
-			this.lokacija = lokacija;
-		}
+		@OneToOne(cascade=CascadeType.ALL,fetch = FetchType.LAZY)
+		private IpLog ipLog;
+		
+		
 		public Vodic() {
 			
 		}
+		
+		public IpLog getIpLog() {
+			return ipLog;
+		}
+
+		public void setIpLog(IpLog ipLog) {
+			this.ipLog = ipLog;
+		}
+
+
 
 		public String getIme() {
 			return ime;
@@ -102,35 +107,46 @@ import jakarta.persistence.NamedQuery;
 			this.lokacija = lokacija;
 		}
 		
+		
+		
+		public Long getId() {
+			return id;
+		}
+		public void setId(Long id) {
+			this.id = id;
+		}
 		@Override
 		public int hashCode() {
-			final int prime = 31;
-			int result = 1;
-			result = prime * result + ((id == null) ? 0 : id.hashCode());
-			return result;
+		    final int prime = 31;
+		    int result = 1;
+		    result = prime * result + ((id == null) ? 0 : id.hashCode());
+		    return result;
 		}
-		
+
 		@Override
 		public boolean equals(Object obj) {
-			if (this == obj)
-				return true;
-			if (obj == null)
-				return false;
-			if (getClass() != obj.getClass())
-				return false;
-			Vodic other = (Vodic) obj;
-			if (id == null) {
-				if (other.id != null)
-					return false;
-			} else if (!id.equals(other.id))
-				return false;
-			return true;
+		    if (this == obj)
+		        return true;
+		    if (obj == null)
+		        return false;
+		    if (getClass() != obj.getClass())
+		        return false;
+		    Vodic other = (Vodic) obj;
+		    if (id == null) {
+		        if (other.id != null)
+		            return false;
+		    } else if (!id.equals(other.id))
+		        return false;
+		    return true;
 		}
+
 		@Override
 		public String toString() {
 			return "Vodic [id=" + id + ", ime=" + ime + ", prezime=" + prezime + ", email=" + email + ", korisnickoIme="
-					+ korisnickoIme + ", sifra=" + sifra + ", rejting=" + rejting + ", lokacija=" + lokacija + "]";
+					+ korisnickoIme + ", sifra=" + sifra + ", rejting=" + rejting + ", lokacija=" + lokacija
+					+ ", ipLog=" + ipLog + "]";
 		}
+
 		
 
 		

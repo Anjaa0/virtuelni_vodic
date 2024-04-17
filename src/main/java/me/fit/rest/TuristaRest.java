@@ -52,14 +52,14 @@ public class TuristaRest {
 	    }
 	   
 	    @GET
-	    @Path("/svetijebem")
+	    @Path("/zdravo")
 	    @Produces(MediaType.TEXT_PLAIN)
 	    public String hello() {
 	        return "Ćao Anja";
 	    }
 	    
 	    @GET
-	    @Path("/jbg")
+	    @Path("/prijatno")
 	    @Produces(MediaType.TEXT_PLAIN)
 	    public String goodbye() {
 	        return "Doviđenja Anja";
