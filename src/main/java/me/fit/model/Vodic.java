@@ -1,10 +1,16 @@
 package me.fit.model;
-	import jakarta.persistence.CascadeType;
+	import java.util.HashSet;
+import java.util.Set;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
-	import jakarta.persistence.GenerationType;
-	import jakarta.persistence.Id;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.NamedQueries;
 import jakarta.persistence.NamedQuery;
 import jakarta.persistence.OneToOne;
@@ -33,14 +39,33 @@ import me.fit.rest.IpLog;
 		private int rejting;
 		private String lokacija;
 		
-		@OneToOne(cascade=CascadeType.ALL,fetch = FetchType.LAZY)
+		@OneToOne(cascade=CascadeType.ALL,fetch = FetchType.EAGER)
 		private IpLog ipLog;
 		
+		@ManyToMany(cascade = { CascadeType.ALL })
+		@JoinTable(
+		    name = "Vodic_Tura", 
+		    joinColumns = {@JoinColumn(name = "vodic_id") }, 
+		    inverseJoinColumns = { @JoinColumn(name = "tura_id") }
+		)
+		private Set<Tura> ture = new HashSet<>();
+
 		
 		public Vodic() {
 			
 		}
 		
+		
+		public Set<Tura> getTure() {
+			return ture;
+		}
+
+
+		public void setTure(Set<Tura> ture) {
+			this.ture = ture;
+		}
+
+
 		public IpLog getIpLog() {
 			return ipLog;
 		}
